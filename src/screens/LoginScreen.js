@@ -8,7 +8,7 @@ const LoginScreen = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
+    
     return (
         <View style={styles.container}>
             <Title style={styles.titleText}>Welcome to Traveho Chat!</Title>
