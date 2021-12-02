@@ -34,7 +34,7 @@ const SignupScreen = ({ navigation }) => {
                 size={30}
                 style={styles.navButton}
                 color='#6646ee'
-                onPress={() => navigation.navigate('Login')}
+                onPress={() => navigation.goBack()}
             />
         </View>
     );
