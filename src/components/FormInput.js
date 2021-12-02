@@ -1,17 +1,17 @@
 import React from 'react';
 import { StyleSheet, Dimensions } from 'react-native';
-import { TextInput } from 'react-native-paper';
+import { Input } from 'react-native-elements';
 
 //to dynamically calculate width and height of components corresponding to screen sizes:
-const { width, height } = Dimensions.get('screen');
+const { width } = Dimensions.get('screen');
 
-const FormInput = ({ labelName, ...rest }) => {
+const FormInput = ({ labelName, type, ...rest }) => {
 
     return (
-        <TextInput 
-            label={labelName}
+        <Input
+            placeholder={labelName}
             style={styles.input}
-            numberOfLines={1}
+            type={type}
             {...rest}
         />
     );
@@ -20,10 +20,9 @@ const FormInput = ({ labelName, ...rest }) => {
 //Styles for this component
 const styles = StyleSheet.create({
     input: {
-        marginTop: 10,
-        marginBottom: 10,
-        width: width / 1.5,
-        height: height / 15
+        marginBottom: 5,
+        width: width / 2,
+        height: 20
     }
 });
 

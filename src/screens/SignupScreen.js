@@ -1,55 +1,90 @@
-import React, { useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Title, IconButton } from 'react-native-paper';
+import { Button, Text } from 'react-native-elements'
 import FormInput from '../components/FormInput';
-import FormButton from '../components/FormButton';
+import { auth } from '../../firebase';
 
 const SignupScreen = ({ navigation }) => {
 
     const [email, setEmail] = useState('');
+    const [name, setName] = useState('');
     const [password, setPassword] = useState('');
+    const [imageUrl, setImageUrl] = useState('');
+
+    //register function
+    const register = () => {
+      auth.createUserWithEmailAndPassword(email, password)
+      .then(authUser => {
+        authUser.user.updateProfile({
+          displayName: name,
+          photoURL: imageUrl || 'https://connectingcouples.us/wp-content/uploads/2019/07/avatar-placeholder.png'
+        });
+      })
+      .catch(error => alert(error.message));
+    }
 
     return (
         <View style={styles.container}>
             <Title style={styles.titleText}>Register to Traveho Chat.</Title>
             <FormInput 
-                labelName='Email'
+              placeholder='Name'
+              type='text'
+              value={name}
+              autoCapitalize='none'
+              onChangeText={userName => setName(userName)}
+            />
+            <FormInput 
+                placeholder='Email'
+                type='email'
                 value={email}
                 autoCapitalize='none'
                 onChangeText={userEmail => setEmail(userEmail)}
             />
             <FormInput 
-                labelName='Password'
+                placeholder='Password'
+                type="password"
                 value={password}
-                secureTextEntry={true}
+                secureTextEntry
                 onChangeText={userPassword => setPassword(userPassword)}
             />
-            <FormButton 
+            <FormInput 
+              placeholder='Profile picture URL (optional)'
+              type="password"
+              value={imageUrl}
+              secureTextEntry
+              onChangeText={userImage => setImageUrl(userImage)}
+             />
+            <Button 
                 title='Register'
-                modeVlue='contained'
-                labelStyle={styles.loginButtonLabel}
+                containerStyle={styles.button}
+                onPress={register}
+                raised
             />
             <IconButton
                 icon='keyboard-backspace'
                 size={30}
                 style={styles.navButton}
-                color='#6646ee'
+                color='#8d61a8'
                 onPress={() => navigation.goBack()}
             />
+            <Text h5 style={styles.iconText}>Back to Login</Text>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-      backgroundColor: '#f5f5f5',
+      backgroundColor: 'white',
       flex: 1,
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
+      padding: 20
     },
     titleText: {
       fontSize: 24,
-      marginBottom: 10
+      marginBottom: 30,
+      color: '#8d61a8'
     },
     loginButtonLabel: {
       fontSize: 22
@@ -59,6 +94,16 @@ const styles = StyleSheet.create({
     },
     navButton: {
       marginTop: 10
+    },
+    button: {
+      width: 200,
+      marginTop: 10,
+      marginBottom: 10
+    },
+    iconText: {
+      color: '#8d61a8',
+      marginTop: -15,
+      fontWeight: 'bold'
     }
   });
 
