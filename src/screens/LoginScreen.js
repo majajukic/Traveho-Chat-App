@@ -23,7 +23,7 @@ const LoginScreen = ({ navigation }) => {
 
     //login functionallity:
     const login = () => {
-
+      auth.signInWithEmailAndPassword(email, password).catch(error => alert(error));
     }
     
     return (

@@ -22,6 +22,7 @@ const SignupScreen = ({ navigation }) => {
         });
       })
       .catch(error => alert(error.message));
+
     }
 
     return (
@@ -50,9 +51,8 @@ const SignupScreen = ({ navigation }) => {
             />
             <FormInput 
               placeholder='Profile picture URL (optional)'
-              type="password"
+              type="text"
               value={imageUrl}
-              secureTextEntry
               onChangeText={userImage => setImageUrl(userImage)}
              />
             <Button 
