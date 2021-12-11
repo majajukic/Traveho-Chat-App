@@ -25,10 +25,10 @@ const HomeScreen = ({ navigation }) => {
                 id: doc.id,
                 data: doc.data()
             })))
-        ))
+        ));
 
         return unsubscribe;
-    }, [])
+    }, []);
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -50,11 +50,19 @@ const HomeScreen = ({ navigation }) => {
         });
     }, []);
 
+    //method for entering the specific chat room:
+    const enterChat = (id, chatName) => {
+        navigation.navigate('Chat', {
+            id,
+            chatName
+        });
+    }
+
     return (
         <SafeAreaView>
             <ScrollView style={styles.container}>
               {chats.map(({id, data: { chatName }}) => (
-              <CustomListItem key={id} id={id} chatName={chatName} />
+              <CustomListItem key={id} id={id} chatName={chatName} enterChat={enterChat} />
             ))}
             </ScrollView>
         </SafeAreaView>

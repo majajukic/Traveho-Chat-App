@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Image } from 'react-native';
 import { Input, Button } from 'react-native-elements';
 import { db } from '../../firebase';
 
@@ -20,7 +20,7 @@ const AddChatScreen = ({ navigation }) => {
                 color: 'white'
             },
         })
-    }, [])
+    }, []);
 
     const createChat = async () => {
         await db.collection('chats').add({
@@ -38,7 +38,8 @@ const AddChatScreen = ({ navigation }) => {
             value={input} 
             onChangeText={(text) => setInput(text)}
              />
-             <Button style={styles.button} onPress={createChat} title='Create chat' />
+             <Button disabled={!input} style={styles.button} onPress={createChat} title='Create chat' />
+             <Image source={ require('../../assets/addChatPhoto.jpg') } style={styles.addChatImage} />
         </View>
     );
 }
@@ -47,15 +48,24 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: 'white',
         padding: 30,
-        height: "100%"
+        height: "100%",
+        display: 'flex',
+        justifyContent:'center',
+        alignItems: 'center'
     },
     button: {
         width: 200,
-        marginLeft: 80,
+       // marginLeft: 80,
         marginTop: 30
     },
     input: {
         marginTop: 10
+    },
+    addChatImage: {
+        width: 180,
+        height: 200,
+        marginTop: 50,
+        //marginLeft: 80
     }
 });
 

@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, TouchableOpacity, StyleSheet } from 'react-native';
-import { AntDesign, SimpleLineIcons} from '@expo/vector-icons';
+import { SimpleLineIcons } from '@expo/vector-icons';
 
 
 const AppbarIcons = ({ addChat }) => {
     return (
         <View style={styles.container}>
             <TouchableOpacity activeOpacity={0.5}>
-                <AntDesign name='camerao' size={22} color='white' />
+                <SimpleLineIcons name='magnifier' size={22} color='white' />
             </TouchableOpacity>
             <TouchableOpacity activeOpacity={0.5} onPress={addChat}>
                 <SimpleLineIcons name='pencil' size={22} color='white' />

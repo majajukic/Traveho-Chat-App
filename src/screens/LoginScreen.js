@@ -28,7 +28,7 @@ const LoginScreen = ({ navigation }) => {
     
     return (
         <View style={styles.container}>
-          <Image source={require('../../assets/loginImage.jpg')} style={styles.loginImage} />
+          <Image source={ require('../../assets/loginImage.jpg') } style={styles.loginImage} />
             <Title style={styles.titleText}>Welcome to Traveho Chat!</Title>
             <FormInput 
                 placeholder='Email'
