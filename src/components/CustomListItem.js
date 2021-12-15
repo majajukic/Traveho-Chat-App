@@ -24,10 +24,13 @@ const CustomListItem = ({id, chatName, enterChat}) => {
 
     return (
         <ListItem key={id} bottomDivider onPress={() => enterChat(id, chatName)}>
+        {chatMessages[0] !== undefined ? (
             <Avatar
             rounded
-            source={{ uri: chatMessages[0]?.photoURL || require('../../assets/chatroomLogo.jpg') }} 
-          />
+            source={{ uri: chatMessages[0]?.photoURL }} />
+        ) : (
+            <Avatar rounded source={require('../../assets/chatroomLogo.jpg')} />
+        )}
           <ListItem.Content>
                 <ListItem.Title style={styles.title}>{chatName}</ListItem.Title>
                 <ListItem.Subtitle numberOfLines={1} ellipsizeMode="tail" style={styles.subtitle}>{ chatMessages.length === 0 ? 'Be first to write!' : chatMessages?.[0]?.displayName + ' : ' + chatMessages?.[0]?.message }</ListItem.Subtitle>
