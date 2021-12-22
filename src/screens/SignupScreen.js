@@ -17,7 +17,7 @@ const SignupScreen = ({ navigation }) => {
       auth.createUserWithEmailAndPassword(email, password)
       .then(authUser => {
         authUser.user.updateProfile({
-          displayName: name,
+          displayName: name || 'AnonUser',
           photoURL: imageUrl || 'https://connectingcouples.us/wp-content/uploads/2019/07/avatar-placeholder.png'
         });
       })
