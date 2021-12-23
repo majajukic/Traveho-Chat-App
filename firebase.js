@@ -12,15 +12,6 @@ const firebaseConfig = {
     appId: "1:816116956132:web:3d1f7ee865b1056b2625f1"
   };
 
-//let app;
-
-//if the app is already initialized, we shouldn't do it again, if it's not use the current app:
-/*if(firebase.apps.legth === 0) {
-  app = initializeApp(firebaseConfig);
-} else {
-  app = firebase.app();
-}*/
-
 firebase.initializeApp(firebaseConfig);
 
 const db = firebase.firestore();
