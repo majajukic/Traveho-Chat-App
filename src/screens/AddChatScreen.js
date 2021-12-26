@@ -55,7 +55,6 @@ const styles = StyleSheet.create({
     },
     button: {
         width: 200,
-       // marginLeft: 80,
         marginTop: 30
     },
     input: {
@@ -65,7 +64,6 @@ const styles = StyleSheet.create({
         width: 180,
         height: 200,
         marginTop: 50,
-        //marginLeft: 80
     }
 });
 
