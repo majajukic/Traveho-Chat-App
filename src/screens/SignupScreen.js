@@ -1,5 +1,5 @@
-import React, { useLayoutEffect, useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, StyleSheet, Alert } from 'react-native';
 import { Title, IconButton } from 'react-native-paper';
 import { Button, Text } from 'react-native-elements'
 import FormInput from '../components/FormInput';
@@ -14,16 +14,19 @@ const SignupScreen = ({ navigation }) => {
 
     //register function
     const register = () => {
-      auth.createUserWithEmailAndPassword(email, password)
+      if(!name.trim() || !email.trim() || !password.trim()){
+        Alert.alert('Name, email and password are required!');
+      } else {
+        auth.createUserWithEmailAndPassword(email, password)
       .then(authUser => {
         authUser.user.updateProfile({
-          displayName: name || 'AnonUser',
+          displayName: name,
           photoURL: imageUrl || 'https://connectingcouples.us/wp-content/uploads/2019/07/avatar-placeholder.png'
         });
       })
       .catch(error => alert(error.message));
-
-    }
+      }
+  }
 
     return (
         <View style={styles.container}>
