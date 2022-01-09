@@ -33,7 +33,7 @@ const ChatScreen = ({ navigation, route }) => {
     const sendMessage = () => {
         Keyboard.dismiss();
 
-        //to know in which chat we are in, we use the routeparams.id
+        //to know in which chat we are in, we use the route.params.id
         db.collection('chats').doc(route.params.id).collection('messages').add({
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
             message: input,
@@ -124,7 +124,7 @@ const ChatScreen = ({ navigation, route }) => {
                     </TouchableOpacity>
                     </View>
                     </>
-                </TouchableWithoutFeedback>
+                </ TouchableWithoutFeedback>
             </KeyboardAvoidingView>
         </SafeAreaView>
     );

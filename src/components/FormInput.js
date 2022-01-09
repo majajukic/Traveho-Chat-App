@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Dimensions } from 'react-native';
 import { Input } from 'react-native-elements';
 
-//to dynamically calculate width and height of components corresponding to screen sizes:
+//to dynamically calculate width of components corresponding to screen sizes:
 const { width } = Dimensions.get('screen');
 
 const FormInput = ({ labelName, type, ...rest }) => {

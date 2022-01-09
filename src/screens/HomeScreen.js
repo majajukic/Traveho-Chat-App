@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
-import { SafeAreaView, ScrollView, View, TouchableOpacity, StyleSheet } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet } from 'react-native';
 import CustomListItem from '../components/CustomListItem';
 import AppbarIcons from '../components/AppbarIcons';
 import { auth, db } from '../../firebase';
